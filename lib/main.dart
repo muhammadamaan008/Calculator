@@ -13,82 +13,134 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
-            child: Column(
+          child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                  child: const Text('data',
-                      style: TextStyle(color: Colors.white))),
+            const Expanded(
+              flex: 1,
+              child: Text('data', style: TextStyle(color: Colors.white)),
             ),
             Expanded(
-                flex: 3,
+                flex: 2,
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 50),
-                  child: const Column(
+                  padding: const EdgeInsets.only(bottom: 50),
+                  child: Column(
                     verticalDirection: VerticalDirection.up,
                     children: [
                       Row(
                         children: [
-                          MyButton(textData: 'AC'),
-                          MyButton(textData: '+/-'),
+                          MyButton(
+                            textData: 'AC',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '+/-',
+                            onBtnPress: () {},
+                          ),
                           MyButton(
                             textData: '%',
+                            onBtnPress: () {},
                           ),
                           MyButton(
                             textData: '/',
                             btnColor: Colors.orange,
+                            onBtnPress: () {},
                           )
                         ],
                       ),
                       Row(
                         children: [
-                          MyButton(textData: '7'),
-                          MyButton(textData: '8'),
-                          MyButton(textData: '9'),
+                          MyButton(
+                            textData: '7',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '8',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '9',
+                            onBtnPress: () {},
+                          ),
                           MyButton(
                             textData: '*',
                             btnColor: Colors.orange,
+                            onBtnPress: () {},
                           )
                         ],
                       ),
                       Row(
                         children: [
-                          MyButton(textData: '4'),
-                          MyButton(textData: '5'),
-                          MyButton(textData: '6'),
+                          MyButton(
+                            textData: '4',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '5',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '6',
+                            onBtnPress: () {},
+                          ),
                           MyButton(
                             textData: '-',
                             btnColor: Colors.orange,
+                            onBtnPress: () {},
                           )
                         ],
                       ),
                       Row(
                         children: [
-                          MyButton(textData: '1'),
-                          MyButton(textData: '2'),
-                          MyButton(textData: '3'),
+                          MyButton(
+                            textData: '1',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '2',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '3',
+                            onBtnPress: () {},
+                          ),
                           MyButton(
                             textData: '+',
                             btnColor: Colors.orange,
+                            onBtnPress: () {},
                           )
                         ],
                       ),
                       Row(
                         children: [
-                          MyButton(textData: '0'),
-                          MyButton(textData: '.'),
-                          MyButton(textData: 'DEL'),
+                          MyButton(
+                            textData: '0',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: '.',
+                            onBtnPress: () {},
+                          ),
+                          MyButton(
+                            textData: 'DEL',
+                            onBtnPress: () {},
+                          ),
                           MyButton(
                             textData: '=',
                             btnColor: Colors.orange,
+                            onBtnPress: () {},
                           )
                         ],
                       )

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final String textData;
   final Color btnColor;
+  final VoidCallback onBtnPress;
 
     const MyButton({
     required this.textData,
     this.btnColor = Colors.grey,
+    required this.onBtnPress,
     super.key,
   });
 
@@ -16,7 +18,7 @@ class MyButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
         child: InkWell(
-          onTap: (){},
+          onTap: onBtnPress,
           child: Container(
             height: 60,
             width: 60,
