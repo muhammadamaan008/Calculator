@@ -1,5 +1,6 @@
 import 'package:calculator/components/my_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,50 +14,82 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-@override
+  var userInput = '';
+  var result = '';
+
+  void concatenate(var input) {
+    userInput += input;
+    setState(() {});
+  }
+
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
-          child: Column(
-          mainAxisSize: MainAxisSize.max,
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const Expanded(
-              flex: 1,
-              child: Text('data', style: TextStyle(color: Colors.white)),
-            ),
+            Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.bottomRight,
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(userInput.toString(),
+                          style: const TextStyle(
+                              fontSize: 30, color: Colors.white)),
+                      Text(result.toString(),
+                          style: const TextStyle(
+                              fontSize: 30, color: Colors.white)),
+                    ],
+                  ),
+                )),
             Expanded(
                 flex: 2,
                 child: Container(
-                  padding: const EdgeInsets.only(bottom: 50),
+                  // color: Colors.white,
+                  padding: const EdgeInsets.only(top: 60),
                   child: Column(
-                    verticalDirection: VerticalDirection.up,
                     children: [
                       Row(
                         children: [
                           MyButton(
                             textData: 'AC',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              userInput = '';
+                              result = '';
+                              setState(() {});
+                            },
                           ),
                           MyButton(
                             textData: '+/-',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('+/-');
+                            },
                           ),
                           MyButton(
                             textData: '%',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('%');
+                            },
                           ),
                           MyButton(
                             textData: '/',
                             btnColor: Colors.orange,
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('/');
+                            },
                           )
                         ],
                       ),
@@ -64,20 +97,28 @@ class _MainAppState extends State<MainApp> {
                         children: [
                           MyButton(
                             textData: '7',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('7');
+                            },
                           ),
                           MyButton(
                             textData: '8',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('8');
+                            },
                           ),
                           MyButton(
                             textData: '9',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('9');
+                            },
                           ),
                           MyButton(
                             textData: '*',
                             btnColor: Colors.orange,
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('*');
+                            },
                           )
                         ],
                       ),
@@ -85,20 +126,28 @@ class _MainAppState extends State<MainApp> {
                         children: [
                           MyButton(
                             textData: '4',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('4');
+                            },
                           ),
                           MyButton(
                             textData: '5',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('5');
+                            },
                           ),
                           MyButton(
                             textData: '6',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('6');
+                            },
                           ),
                           MyButton(
                             textData: '-',
                             btnColor: Colors.orange,
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('-');
+                            },
                           )
                         ],
                       ),
@@ -106,20 +155,28 @@ class _MainAppState extends State<MainApp> {
                         children: [
                           MyButton(
                             textData: '1',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('1');
+                            },
                           ),
                           MyButton(
                             textData: '2',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('2');
+                            },
                           ),
                           MyButton(
                             textData: '3',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('3');
+                            },
                           ),
                           MyButton(
                             textData: '+',
                             btnColor: Colors.orange,
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('+');
+                            },
                           )
                         ],
                       ),
@@ -127,11 +184,15 @@ class _MainAppState extends State<MainApp> {
                         children: [
                           MyButton(
                             textData: '0',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('0');
+                            },
                           ),
                           MyButton(
                             textData: '.',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              concatenate('.');
+                            },
                           ),
                           MyButton(
                             textData: 'DEL',
@@ -140,10 +201,13 @@ class _MainAppState extends State<MainApp> {
                           MyButton(
                             textData: '=',
                             btnColor: Colors.orange,
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              equalPress();
+                              setState(() {});
+                            },
                           )
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ))
@@ -151,5 +215,17 @@ class _MainAppState extends State<MainApp> {
         )),
       ),
     );
+  }
+
+  void equalPress() {
+    // String finalInput = userInput;
+    // finalInput = finalInput.replaceAll('x', '*');
+    Parser p = Parser();
+    Expression exp = p.parse(userInput);
+    ContextModel cm = ContextModel();
+
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
+
+    result = eval.toString();
   }
 }
