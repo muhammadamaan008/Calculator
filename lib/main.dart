@@ -196,7 +196,14 @@ class _MainAppState extends State<MainApp> {
                           ),
                           MyButton(
                             textData: 'DEL',
-                            onBtnPress: () {},
+                            onBtnPress: () {
+                              setState(() {
+                                userInput = userInput.substring(0,userInput.length-1);
+                                // if(userInput.contains('+')) {
+                                //   equalPress();
+                                // }
+                              });
+                            },
                           ),
                           MyButton(
                             textData: '=',
